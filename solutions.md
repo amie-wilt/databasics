@@ -31,10 +31,28 @@ How many total items did we sell?
 
 How much was spent on books?
 
+`SELECT SUM(price * quantity) FROM items INNER JOIN orders ON items.id = orders.item_id WHERE items.category LIKE "%Book%";`
+
 Simulate buying an item by inserting a User for yourself and an Order for that User.
+
+`INSERT INTO users (first_name, last_name, email)`
+`VALUES ('Amie', 'Wilt', 'amie.wilt@gmail.com');`
+
+`INSERT INTO orders (user_id, item_id, quantity, created_at)`
+`VALUES (51, 3, 1, CURRENT_TIMESTAMP);`
 
 What item was ordered most often? Grossed the most money?
 
+ `SELECT MAX( quantity ), item_id FROM orders;`
+ `SELECT MAX(price * quantity), item_id FROM items INNER JOIN orders ON items.id = orders.item_id;`
+
 What user spent the most?
+
+looking for user
+orders and items have item_id in common, join there
+orders and users have user_id in common, join there
+
+
+
 
 What were the top 3 highest grossing categories?
